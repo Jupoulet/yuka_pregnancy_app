@@ -1,0 +1,11 @@
+table.product {
+    padding: 1rem 0;
+}
+
+table.product td {
+    border-bottom: 1px solid var(--GRAY-02);
+    padding: 1rem 0;
+}
+table.product td:not(:first-child) {
+    padding:1rem;
+}
