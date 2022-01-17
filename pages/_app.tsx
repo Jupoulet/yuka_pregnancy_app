@@ -1,6 +1,6 @@
 import Head from "next/head";
 import type { AppProps } from "next/app";
-
+import { Layout } from "../components/Layout"
 import styles from "../styles/Home.module.css";
 import "../styles/globals.css";
 
@@ -13,10 +13,11 @@ function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-        <h1 className={styles.title}>Baby Yuka</h1>
-        <Component {...pageProps} />
-      </main>
+
+
+      <Layout>
+        <Component {...pageProps} /></Layout>
+
     </div>
   );
 }

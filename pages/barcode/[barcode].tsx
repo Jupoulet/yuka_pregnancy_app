@@ -1,7 +1,7 @@
 import { NextPage } from "next";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import useSWR from "swr";
+import BackHome from "../../components/BackHome";
 
 import styles from "../../styles/Barcode.module.css";
 
@@ -15,7 +15,7 @@ const fetcher = async (url: string) => {
   return data;
 };
 
-const BackHome = () => <Link href="/">Go back home</Link>;
+
 
 type ErrorComponentProps = {
   message: string;
