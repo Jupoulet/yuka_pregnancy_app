@@ -1,5 +1,8 @@
 import React, { useEffect } from 'react';
+// @ts-ignore
 import Quagga from 'quagga';
+
+import styles from '../../styles/barcode-reader/BarcodeReader.module.css';
 
 interface BarcodeData {
   codeResult: {
@@ -8,10 +11,18 @@ interface BarcodeData {
   }
 }
 
-const BarcodeReader: React.FC = () => {
+interface BarcodeReaderProps {
+    onBarcodeScan: (codeBar: string) => void;
+}
+
+const BarcodeReader: React.FC<BarcodeReaderProps> = ({
+    onBarcodeScan,
+}) => {
+
   const handleBarcode = (data: BarcodeData) => {
-    console.log('BARCODE READ', data);
+    onBarcodeScan(data.codeResult.code);
   }
+
   useEffect(() => {
     Quagga.init({
       inputStream : {
@@ -33,9 +44,15 @@ const BarcodeReader: React.FC = () => {
     });
 
     return () => Quagga.stop();
-  }, [])
+  }, []);
+
   return (
-    <div id="quaggaTarget" />
+    <div className={styles['BarcodeReader-wrapper']}>
+      <div id="quaggaTarget" className={`${styles.BarcodeReader} ${styles.Canvas}`} />
+      <fieldset className={styles['BarcodeReader-fieldset']}>
+          <legend>Scanner zone</legend>
+      </fieldset>
+    </div>
   )
 }
 
