@@ -1,0 +1,26 @@
+.BarcodeReader > video {
+    width: 100%;
+    position: relative;
+}
+
+.BarcodeReader-wrapper {
+    position: relative;
+}
+
+.Canvas > canvas { display: none; }
+
+.BarcodeReader-fieldset {
+    width: 80%;
+    height: 80%;
+    border: solid red 2px;
+    padding: 2rem 1rem;
+    position: absolute;
+    top: 45%;
+    transform: translate(-50%, -50%);
+    left: 50%;
+}
+
+.BarcodeReader-fieldset > legend {
+    padding: 4rem 1rem;
+    color: red;
+}
