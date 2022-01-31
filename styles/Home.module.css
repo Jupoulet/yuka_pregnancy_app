@@ -10,45 +10,6 @@
   margin: auto 0;
 }
 
-.barcodeInput {
-  background-color: var(--GRAY-01);
-  border-radius: 100px;
-  border: solid 1px var(--GRAY-02);
-  padding: 1rem;
-  font-size: 1rem;
-  font-weight: 500;
-  flex: 1 1 100%;
-}
-.barcodeInput::placeholder {
-  color: var(--GRAY-03);
-  font-size: 1rem;
-  font-weight: 500;
-}
-
-.submitButton {
-  background-color: var(--GRAY-01);
-  border: solid 1px var(--GRAY-02);
-  cursor: pointer;
-  padding: 1rem 1.5rem;
-  font-size: 1rem;
-  border-radius: 100px;
-  transition: background-color 50ms ease-in-out;
-}
-.submitButton:hover {
-  background-color: var(--GRAY-02);
-}
-
-.form {
-  display: flex;
-  grid-gap: 0.75rem;
-  margin-bottom:1rem;
-}
-
-.title {
-  text-align: center;
-  margin-bottom: 32px;
-}
-
 @media (min-width: 1048px) {
   .main {
     padding: 2rem;
