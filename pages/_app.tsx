@@ -1,6 +1,7 @@
 import Head from "next/head";
 import type { AppProps } from "next/app";
-import Link from 'next/link';
+
+import { NavBar } from '../components/navbar/Navbar';
 
 import styles from "../styles/Home.module.css";
 import "../styles/globals.css";
@@ -13,10 +14,8 @@ function App({ Component, pageProps }: AppProps) {
         <meta name="description" content="Yuka for pregnant women" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Link href="/barcode/scanner">Scanner</Link>
-
+      <NavBar />
       <main className={styles.main}>
-        <h1 className={styles.title}>Baby Yuka</h1>
         <Component {...pageProps} />
       </main>
     </div>

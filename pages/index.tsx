@@ -24,24 +24,27 @@ const Home: NextPage = () => {
   };
 
   return (
-    <form onSubmit={handleOnSubmit} className={styles.form}>
-      <label htmlFor="barcode" className={styleUtils.visuallyHidden}>
-        Barcode
-      </label>
-      <input
-        className={styles.barcodeInput}
-        id="barcode"
-        type="text"
-        placeholder="Barcode"
-        autoFocus
-        value={barcode}
-        onChange={handleChange}
-        required
-      />
-      <button type="submit" className={styles.submitButton}>
-        Analyze
-      </button>
-    </form>
+    <>
+      <h1 className={styles.title}>Baby Yuka</h1>
+      <form onSubmit={handleOnSubmit} className={styles.form}>
+        <label htmlFor="barcode" className={styleUtils.visuallyHidden}>
+          Barcode
+        </label>
+        <input
+          className={styles.barcodeInput}
+          id="barcode"
+          type="text"
+          placeholder="Barcode"
+          autoFocus
+          value={barcode}
+          onChange={handleChange}
+          required
+        />
+        <button type="submit" className={styles.submitButton}>
+          Analyze
+        </button>
+      </form>
+    </>
   );
 };
 
