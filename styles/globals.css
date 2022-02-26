@@ -1,3 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.clip-rectZero { 
+  clip: rect(0 0 0 0);
+}
+
 :root {
   --GRAY-01: #F6F6F6;
   --GRAY-02: #E8E8E8;

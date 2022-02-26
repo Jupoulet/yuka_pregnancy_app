@@ -3,9 +3,6 @@ import type { NextPage } from "next";
 
 import { useRouter } from "next/router";
 
-import styles from "../styles/Home.module.css";
-import styleUtils from "../styles/Utils.module.css";
-
 const Home: NextPage = () => {
   const [barcode, setBarcode] = useState("");
   const router = useRouter();
@@ -25,13 +22,19 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <h1 className={styles.title}>Baby Yuka</h1>
-      <form onSubmit={handleOnSubmit} className={styles.form}>
-        <label htmlFor="barcode" className={styleUtils.visuallyHidden}>
+      <h1 className="text-3xl font-bold text-center mb-4">Baby Yuka</h1>
+      <form
+        onSubmit={handleOnSubmit}
+        className="flex mb-4 gap-3"
+      >
+        <label htmlFor="barcode" className="inline-block absolute overflow-hidden clip-rectZero h-px w-px -m-px p-0 border-none">
           Barcode
         </label>
         <input
-          className={styles.barcodeInput}
+          className="
+            bg-slate-200 border-slate-300 border p-4 text-base font-medium flex-auto rounded-full
+            placeholder:text-gray-500 placeholder:font-medium placeholder:text-base
+          "
           id="barcode"
           type="text"
           placeholder="Barcode"
@@ -40,7 +43,11 @@ const Home: NextPage = () => {
           onChange={handleChange}
           required
         />
-        <button type="submit" className={styles.submitButton}>
+        <button type="submit" className="
+          bg-slate-200 border-slate-300 cursor-pointer py-4 px-6 text-base rounded-full transition
+          hover:bg-slate-300
+          "
+        >
           Analyze
         </button>
       </form>
