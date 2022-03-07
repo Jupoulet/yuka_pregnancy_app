@@ -15,7 +15,7 @@ function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <NavBar />
-      <main className="w-full my-auto mx-0">
+      <main className="w-full my-auto mx-0 md:p-8 md:max-w-2xl md:m-auto md:bg-white md:rounded-lg">
         <Component {...pageProps} />
       </main>
     </div>
