@@ -7,6 +7,7 @@ import useSWR from "swr";
 import styles from "../../styles/Barcode.module.css";
 import {OpenFoodFactResponse, Product} from "../../models/OpenFoodFactAPI";
 import { Title } from "../../components/title/Title";
+import { Tag, getRandomTagColor } from "../../components/tag/Tag";
 
 const fetcher = async (url: string):Promise<OpenFoodFactResponse> => {
   const res = await fetch(url);
@@ -42,7 +43,7 @@ const Barcode: NextPage = () => {
   if (data.status === 0)
     return <ErrorComponent message={data.status_verbose} />;
 
-  const { abbreviated_product_name_fr, brands, id, generic_name_fr, ingredients, image_url } =
+  const { categories, brands, id, generic_name_fr, ingredients, image_url } =
     data.product;
   console.log('Product', data.product.ingredients);
   return (
@@ -63,17 +64,17 @@ const Barcode: NextPage = () => {
           <Title>{generic_name_fr}</Title>
         </div>
         <div className="mt-4">
-          <Title size="small">Description</Title>
-          <p>{generic_name_fr}</p>
+          <Title size="small" className="mb-4">Categories</Title>
+          <div className="flex flex-wrap gap-2">
+            {categories.split(',').map((categorie) => {
+              return <Tag key={categorie} color={getRandomTagColor()}>{categorie}</Tag>
+            })}
+          </div>
         </div>
 
       </article>
       <table className={styles.product}>
         <tbody>
-          <tr>
-            <td>Name</td>
-            <td>{abbreviated_product_name_fr}</td>
-          </tr>
           <tr>
             <td>Brands</td>
             <td>{brands}</td>

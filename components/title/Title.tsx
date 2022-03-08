@@ -16,7 +16,7 @@ export const Title: FC<TitleProps> = ({ children, as = 'h1' , size = 'regular', 
         { 'text-4xl': size === 'big' },
         { 'text-xl': size === 'small' },
         'font-bold',
-        'text-emerald-500',
+        'text-black',
         className
       )}
     >{children}</CustomTag>

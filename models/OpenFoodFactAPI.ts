@@ -13,6 +13,7 @@ export interface Product {
     generic_name_fr: string;
     ingredients: Ingredient[];
     image_url?: string;
+    categories: string;
 }
 
 export interface Ingredient {
