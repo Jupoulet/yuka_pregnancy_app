@@ -2,9 +2,9 @@ import { CSSProperties, FC } from "react";
 import classnames from 'classnames';
 import { getRandomArbitrary } from "../../models/utils";
 
-const listedTagColors: TagProps['color'][] = ['slate', 'red', 'orange', 'yellow', 'lime', 'green', 'blue', 'pink'];
+export const listedTagColors: TagProps['color'][] = ['slate', 'red', 'orange', 'yellow', 'lime', 'green', 'blue', 'pink'];
 
-interface TagProps {
+export interface TagProps {
   color: 'slate' | 'red' | 'orange' | 'yellow' | 'lime' | 'green' | 'blue' | 'pink';
   className?: string;
   style?: CSSProperties;

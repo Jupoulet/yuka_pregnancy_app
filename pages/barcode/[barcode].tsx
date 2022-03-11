@@ -7,7 +7,8 @@ import useSWR from "swr";
 import styles from "../../styles/Barcode.module.css";
 import {OpenFoodFactResponse, Product} from "../../models/OpenFoodFactAPI";
 import { Title } from "../../components/title/Title";
-import { Tag, getRandomTagColor } from "../../components/tag/Tag";
+import { Tag, listedTagColors } from "../../components/tag/Tag";
+import { getTagColor } from '../../models/utils';
 
 const fetcher = async (url: string):Promise<OpenFoodFactResponse> => {
   const res = await fetch(url);
@@ -66,8 +67,8 @@ const Barcode: NextPage = () => {
         <div className="mt-4">
           <Title size="small" className="mb-4">Categories</Title>
           <div className="flex flex-wrap gap-2">
-            {categories.split(',').map((categorie) => {
-              return <Tag key={categorie} color={getRandomTagColor()}>{categorie}</Tag>
+            {categories.split(',').map((categorie, index) => {
+              return <Tag key={categorie} color={getTagColor(index, listedTagColors.length)}>{categorie}</Tag>
             })}
           </div>
         </div>
