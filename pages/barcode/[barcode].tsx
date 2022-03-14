@@ -7,8 +7,18 @@ import useSWR from "swr";
 import styles from "../../styles/Barcode.module.css";
 import {OpenFoodFactResponse, Product} from "../../models/OpenFoodFactAPI";
 import { Title } from "../../components/title/Title";
+import { ProgressBar } from "../../components/progress-bar/ProgressBar";
 import { Tag, listedTagColors } from "../../components/tag/Tag";
 import { getTagColor } from '../../models/utils';
+
+const ProductInformationWrapper: React.FC<{ title: string }> = ({ children, title }) => {
+  return (
+    <div className="mt-4">
+      <Title size="small" className="mb-4">{title}</Title>
+      {children}
+    </div>
+  )
+}
 
 const fetcher = async (url: string):Promise<OpenFoodFactResponse> => {
   const res = await fetch(url);
@@ -64,14 +74,32 @@ const Barcode: NextPage = () => {
           </div>
           <Title>{generic_name_fr}</Title>
         </div>
-        <div className="mt-4">
-          <Title size="small" className="mb-4">Categories</Title>
+        <ProductInformationWrapper title="Catégories">
           <div className="flex flex-wrap gap-2">
             {categories.split(',').map((categorie, index) => {
               return <Tag key={categorie} color={getTagColor(index, listedTagColors.length)}>{categorie}</Tag>
             })}
           </div>
-        </div>
+        </ProductInformationWrapper>
+        <ProductInformationWrapper title="Marques">
+          {brands}
+        </ProductInformationWrapper>
+        <ProductInformationWrapper title="Ingrédients">
+          <ul>
+            {ingredients
+                .sort((a, z) => z.percent_estimate - a.percent_estimate)
+                .map((i) => {
+                  return (
+                    <div key={i.id}>
+                      <li key={i.id}>{i.text} {i.percent_estimate}</li>
+                      <ProgressBar width={i.percent_estimate} />
+                    </div>
+                  )
+                })
+            }
+          </ul>
+        </ProductInformationWrapper>
+        
 
       </article>
       <table className={styles.product}>
