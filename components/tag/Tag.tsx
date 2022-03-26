@@ -1,6 +1,6 @@
 import { CSSProperties, FC } from "react";
 import classnames from 'classnames';
-import { getRandomArbitrary } from "../../models/utils";
+import { getRandomArbitrary } from "./Tag.utils";
 
 export const listedTagColors: TagProps['color'][] = ['slate', 'red', 'orange', 'yellow', 'lime', 'green', 'blue', 'pink'];
 

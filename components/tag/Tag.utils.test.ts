@@ -1,5 +1,5 @@
-import { listedTagColors } from '../components/tag/Tag';
-import { getRandomArbitrary, getTagColor } from './utils';
+import { listedTagColors } from './Tag';
+import { getRandomArbitrary, getTagColor } from './Tag.utils';
 
 describe('Utils functions', () => {
   describe('GetTagColor', () => {
