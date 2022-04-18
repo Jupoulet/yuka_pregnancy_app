@@ -1,29 +1,19 @@
-import { NextPage } from "next";
+import { GetServerSidePropsContext, NextPage } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import useSWR from "swr";
+import useSWR, { SWRConfig, SWRConfiguration } from "swr";
 
-import styles from "../../styles/Barcode.module.css";
-import { OpenFoodFactResponse } from "../../models/OpenFoodFactAPI";
-import { Title } from "../../components/title/Title";
+import { OFFWithPregnancyAdvices } from "../../domains/open-food-fact/OpenFoodFactAPI.type";
 import ProductSheet from "../../domains/product-sheet/ProductSheet";
 
-const ProductInformationWrapper: React.FC<{ title: string }> = ({ children, title }) => {
-  return (
-    <div className="mt-4">
-      <Title size="small" className="mb-4">{title}</Title>
-      {children}
-    </div>
-  )
-}
-
-const fetcher = async (url: string):Promise<OpenFoodFactResponse> => {
+const fetcher = async (url: string):Promise<OFFWithPregnancyAdvices> => {
   const res = await fetch(url);
   const data = await res.json();
 
   if (res.status !== 200) {
     throw new Error(data.message);
   }
+
   return data
 };
 
@@ -51,8 +41,15 @@ const Barcode: NextPage = () => {
   if (data.status === 0)
     return <ErrorComponent message={data.status_verbose} />;
 
-  const { categories, brands, id, generic_name_fr, ingredients, image_url } =
-    data.product;
+  const {
+    categories,
+    brands,
+    id,
+    generic_name_fr,
+    ingredients,
+    image_url,
+    ingredients_pregancy,
+  } = data.product;
 
   return (
     <ProductSheet
@@ -61,9 +58,32 @@ const Barcode: NextPage = () => {
       categories={categories}
       image={image_url}
       ingredients={ingredients}
+      ingredients_pregnancy={ingredients_pregancy}
       brands={brands}
     />
   );
 };
 
-export default Barcode;
+export default function Page({ fallback }: SWRConfiguration) {
+  return (
+    <SWRConfig value={{fallback: fallback || {} }}>
+      <Barcode />
+    </SWRConfig>
+  )
+};
+
+export async function getServerSideProps(context: GetServerSidePropsContext) {
+  const { query, req } = context;
+  const protocol = req.headers['x-forwarded-proto'] || 'http'
+  const baseUrl = req ? `${protocol}://${req.headers.host}` : ''
+  const barcode = query.barcode;
+  const url = `/api/open-food-fact/${barcode}`;
+  const dataProduct = await fetcher(`${baseUrl}${url}`)
+  return {
+    props: {
+      fallback: {
+        [url]: dataProduct
+      },
+    }
+  }
+}

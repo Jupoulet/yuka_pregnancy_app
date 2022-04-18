@@ -12,12 +12,10 @@ export interface TagProps {
 
 export const getRandomTagColor = (): TagProps['color'] => {
   const randomIndex = getRandomArbitrary(0, listedTagColors.length - 1);
-  console.log('randomindex', randomIndex);
   return listedTagColors[randomIndex];
 }
 
 export const Tag: FC<TagProps> = ({ children, color, className, style }) => {
-  console.log('color', color);
   return (
     <span
       style={style}
