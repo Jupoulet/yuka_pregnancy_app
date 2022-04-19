@@ -1,4 +1,4 @@
-import { ProductWithAdvices } from "../product/Product.type";
+import { ProductWithAdvices } from '../product/Product.type';
 
 export interface OpenFoodFactResponse {
   code: string;

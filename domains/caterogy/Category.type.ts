@@ -1,4 +1,4 @@
-import { Advice } from "../advices/Advices.type";
+import { Advice } from '../advices/Advices.type';
 
 export type Category = string;
 

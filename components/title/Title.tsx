@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC } from 'react';
 import classnames from 'classnames';
 
 export interface TitleProps {
@@ -7,7 +7,7 @@ export interface TitleProps {
   className?: string;
 }
 
-export const Title: FC<TitleProps> = ({ children, as = 'h1' , size = 'regular', className }) => {
+export const Title: FC<TitleProps> = ({ children, as = 'h1', size = 'regular', className }) => {
   const CustomTag = as;
   return (
     <CustomTag
@@ -17,8 +17,9 @@ export const Title: FC<TitleProps> = ({ children, as = 'h1' , size = 'regular', 
         { 'text-xl': size === 'small' },
         'font-bold',
         'text-black',
-        className
-      )}
-    >{children}</CustomTag>
-  )
-}
+        className,
+      )}>
+      {children}
+    </CustomTag>
+  );
+};
