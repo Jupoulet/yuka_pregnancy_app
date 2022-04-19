@@ -1,6 +1,6 @@
 export const ADVICES = {
-  coffee:  {
+  coffee: {
     id: 1,
-    text: 'Le café n\'est pas interdit mais est à consommer avec modération',
-  }
-}
+    text: "Le café n'est pas interdit mais est à consommer avec modération",
+  },
+};

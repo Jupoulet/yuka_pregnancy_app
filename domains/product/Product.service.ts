@@ -1,8 +1,8 @@
-import { Product } from "../../domains/product/Product.type";
-import { ConsumeWithCaution, DangerousReasonType } from "./Product.type";
-import { ingredientToIngredientWithAdvice, isCoffee } from "../ingredient/Ingredient.service";
-import { ADVICES } from "./Product.constant";
-import { scanUnsafeCategories } from "../caterogy/Category.service";
+import { Product } from '../../domains/product/Product.type';
+import { ConsumeWithCaution, DangerousReasonType } from './Product.type';
+import { ingredientToIngredientWithAdvice, isCoffee } from '../ingredient/Ingredient.service';
+import { ADVICES } from './Product.constant';
+import { scanUnsafeCategories } from '../caterogy/Category.service';
 
 export const isProductDangerous = (product: Product): DangerousReasonType => {
   return {
@@ -10,7 +10,7 @@ export const isProductDangerous = (product: Product): DangerousReasonType => {
     advices: [],
     ingredients: [],
   };
-}
+};
 
 export const isProductToConsumeWithCaution = (product: Product): ConsumeWithCaution => {
   const returnValue: ConsumeWithCaution = {
@@ -29,9 +29,9 @@ export const isProductToConsumeWithCaution = (product: Product): ConsumeWithCaut
 
   for (const ingredient of product.ingredients) {
     if (isCoffee(ingredient)) {
-      returnValue.ingredients.push(ingredientToIngredientWithAdvice(ingredient, ADVICES.coffee.text))
+      returnValue.ingredients.push(ingredientToIngredientWithAdvice(ingredient, ADVICES.coffee.text));
     }
   }
 
   return returnValue;
-}
+};

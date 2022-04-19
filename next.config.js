@@ -4,4 +4,7 @@ module.exports = {
   images: {
     domains: ['images.openfoodfacts.org'],
   },
+  eslint: {
+    dirs: ['pages', 'components', 'domains']
+  }
 }
