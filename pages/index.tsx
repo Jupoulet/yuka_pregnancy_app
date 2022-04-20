@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import type { NextPage } from "next";
+import React, { useState } from 'react';
+import type { NextPage } from 'next';
 
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
 
 const Home: NextPage = () => {
-  const [barcode, setBarcode] = useState("");
+  const [barcode, setBarcode] = useState('');
   const router = useRouter();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -23,11 +23,10 @@ const Home: NextPage = () => {
   return (
     <>
       <h1 className="text-3xl font-bold text-center mb-4">Baby Yuka</h1>
-      <form
-        onSubmit={handleOnSubmit}
-        className="flex mb-4 gap-3"
-      >
-        <label htmlFor="barcode" className="inline-block absolute overflow-hidden clip-rectZero h-px w-px -m-px p-0 border-none">
+      <form onSubmit={handleOnSubmit} className="flex mb-4 gap-3">
+        <label
+          htmlFor="barcode"
+          className="inline-block absolute overflow-hidden clip-rectZero h-px w-px -m-px p-0 border-none">
           Barcode
         </label>
         <input
@@ -43,11 +42,12 @@ const Home: NextPage = () => {
           onChange={handleChange}
           required
         />
-        <button type="submit" className="
+        <button
+          type="submit"
+          className="
           bg-slate-200 border-slate-300 cursor-pointer py-4 px-6 text-base rounded-full transition
           hover:bg-slate-300
-          "
-        >
+          ">
           Analyze
         </button>
       </form>
